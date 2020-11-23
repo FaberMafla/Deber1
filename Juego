@@ -1,0 +1,103 @@
+  /*UNIVERSIDAD TECNICA DEL NORTE
+ *                FICA-CITEL
+ *             SISTEMAS EMBEBIDOS
+ *  Nombre: Faber Mafla     23/11/2020
+ *              Deber #1
+*/
+
+byte led[8] = {8,9,10,11,12,13}; // Puertos de salida
+byte pin;
+int i=0;
+int j=0;
+
+void setup()
+
+{
+  for(pin=0; pin<8; pin++) // Se establese los puetos de entrada
+  {
+    pinMode(led[pin], OUTPUT); 
+  }
+}
+
+void loop()
+/*Juego #1
+Se usan 6 leds, de los cuales se encienden los pares por 10 ocasiones*/
+{
+  for(byte s1=0; s1<10; s1++)// Juego #1
+  {
+    Serial.println(String("")+i);
+    if(i%2==0){
+      digitalWrite(led[1], HIGH); // Leds Pares encendidos 
+      digitalWrite(led[3], HIGH);
+      digitalWrite(led[5], HIGH);
+      delay(200);
+    }
+  }
+ 
+  /*Juego #2
+Se usan 6 leds, de los cuales se encienden los impartes por 10 ocasiones*/
+  for(byte s2=0; s2<10; s2++)// Leds Impares Encendidos
+  { 
+    Serial.println(String("")+j);
+    if(j%2==0){
+      digitalWrite(led[0], LOW);
+      digitalWrite(led[2], LOW);
+      digitalWrite(led[4], LOW);
+      delay(200);
+    }
+  }
+
+  /*Juego #3
+Se encienden secuencialmente cada uno ellos (flexible a su criterio)*/
+  for(byte s3=0; s3<10; s3++)// Secuencia de Leds
+  {
+    int k;
+    for(k=0; k<=6; k++)
+    {
+      digitalWrite(led[k], HIGH);
+      delay(200);
+      digitalWrite(led[k], LOW);
+    }
+    for(k=6; k>0; k--)
+    {
+      digitalWrite(led[k], HIGH);
+      delay(200);
+      digitalWrite(led[k], LOW);
+    }
+  }
+  digitalWrite(led[0], HIGH);
+  delay(200);
+  
+  /*Juego #4
+Su propio diseño de juego.*/
+   
+   for(byte s4=0; s4<10; s4++) // Leds aleatorias
+  {
+    for(int l=0; l<6; l++)
+    {
+      digitalWrite(led[0], HIGH);
+      digitalWrite(led[1], HIGH);
+      digitalWrite(led[2], HIGH);
+      
+      
+      delay(100);
+      digitalWrite(led[0], LOW);
+      digitalWrite(led[1], LOW);
+      digitalWrite(led[2], LOW);
+      
+      delay(100);
+    }
+    for(int m=0; m<3; m++)
+    {
+      digitalWrite(led[4], HIGH);
+      digitalWrite(led[5], HIGH);
+      digitalWrite(led[6], HIGH);
+      
+      delay(100);
+      digitalWrite(led[4], LOW);
+      digitalWrite(led[5], LOW);
+      digitalWrite(led[6], LOW);
+      
+      delay(100);
+    }
+  } }
